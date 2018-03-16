@@ -2,6 +2,7 @@ package cc.lau.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -50,15 +51,107 @@ public class DateUtil {
         return null;
     }
 
+
     /**
-     * string to date, pattern = yyyy-MM-dd HH:mm:ss
+     * 获取一天的开始 00:00:00
      *
-     * @param dateStr
+     * @param date
      * @return
      */
-    public static Date parse(String dateStr) {
-        return DateUtil.parse(dateStr, "yyyy-MM-dd HH:mm:ss");
+    public static Date getDayBegin(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        return c.getTime();
     }
 
+    /**
+     * 获取一天的结束 23:59:59
+     *
+     * @param date
+     * @return
+     */
+    public static Date getDayEnd(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.set(Calendar.HOUR_OF_DAY, 23);
+        c.set(Calendar.MINUTE, 59);
+        c.set(Calendar.SECOND, 59);
+        return c.getTime();
+    }
+
+    /**
+     * 年
+     *
+     * @param date
+     * @return
+     */
+    public static int getYear(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.YEAR);
+    }
+
+    /**
+     * 月
+     *
+     * @param date
+     * @return
+     */
+    public static int getMonth(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.MONTH) + 1;
+    }
+
+    /**
+     * 日
+     *
+     * @param date
+     * @return
+     */
+    public static int getDay(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * 时
+     *
+     * @param date
+     * @return
+     */
+    public static int getHour(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.HOUR_OF_DAY);
+    }
+
+    /**
+     * 分
+     *
+     * @param date
+     * @return
+     */
+    public static int getMinute(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.MINUTE);
+    }
+
+    /**
+     * 秒
+     *
+     * @param date
+     * @return
+     */
+    public static int getSecond(Date date) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.SECOND);
+    }
 
 }
